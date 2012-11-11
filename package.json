@@ -1,0 +1,9 @@
+{
+  "name": "nwk-ejdb-address-book",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "width" : 900,
+    "height" : 600
+  }
+}
