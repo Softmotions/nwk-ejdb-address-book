@@ -34,7 +34,7 @@
                     <li><a href="#addContact" data-toggle="modal">Add contact</a></li>
                 </ul>
                 <form class="navbar-search pull-left">
-                    <input type="text" class="search-query" placeholder="Search contacts">
+                    <input type="text" name="q" class="search-query" placeholder="Search contacts">
                 </form>
             </div>
             <!--/.nav-collapse -->
@@ -54,6 +54,7 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Birthdate</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -70,7 +71,7 @@
     </div>
 
     <div class="alert alert-error fade hide in">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
         <span id="saverr"></span>
     </div>
 

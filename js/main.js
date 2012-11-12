@@ -7,7 +7,8 @@ if (window.global) {
     var win = gui.Window.get();
     var path = require("path");
     var EJDB = require("ejdb");
-    var jb = null;
+
+    var jb = global.jb;
 
 
     win.on("close", function() {
@@ -15,7 +16,7 @@ if (window.global) {
             try {
                 console.info("Closing EJDB..");
                 jb.close();
-                jb = null;
+                jb = global.jb = null;
             } catch (e) {
                 console.error(e);
             }
@@ -24,10 +25,12 @@ if (window.global) {
     });
 
     $(document).ready(function() {
-        if (jb != null) {
-            throw new Error("EJDB already initalized");
+        if (jb == null) {
+            jb = global.jb = EJDB.open("addressbook");
         }
-        jb = EJDB.open("addressbook");
+        $(".alert-error").live("click", function() {
+            $(this).hide();
+        });
 
         $("#birthdate").datepicker({
             changeMonth : true,
@@ -50,24 +53,47 @@ if (window.global) {
                 SaveErr("At least name field should be filled");
                 return;
             }
-            $("#saverr").parent().hide();
             jb.save("contacts", saveObj, function(err, oids) {
                 if (err) {
                     SaveErr(err);
                     return;
                 }
+                $("#saverr").parent().hide();
                 $('#addContact').modal("hide");
-
                 Search(null, saveObj["_id"], true);
             });
         });
 
-        Search(); //Load contact list
+
+        $(".rmrecord").live("click", function() {
+            var href = $(this).attr("href");
+            Remove(href.substring(1));
+        });
+
+        var sq = window.location.search;  //Query pattern
+        if (sq && sq.indexOf("?q=") == 0) {
+            sq = decodeURIComponent(sq.substring("?q=".length));
+            $("input[name='q']").val(sq);
+        } else {
+            sq = null;
+        }
+        Search(sq); //Load contact list
     });
 
     function SaveErr(err) {
         $("#saverr").text(err ? err.toString() : "Unknown error");
         $("#saverr").parent().show();
+    }
+
+
+    function Remove(id) {
+        jb.remove("contacts", id, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            $("a[href='#" + id + "']").parent().parent().remove();
+        });
     }
 
     function Search(pattern, id, append) {
@@ -81,11 +107,11 @@ if (window.global) {
         var q = { //Main query
         };
         var orq = []; //OR joined queries
-        console.log("id=" + id);
         if (id) {
             q["_id"] = id;
         } else if (pattern) {
-            //todo
+            orq.push({"name" : {"$begin" : pattern}});
+            orq.push({"email" : {"$begin" : pattern}});
         }
         jb.find("contacts", q, orq, {$orderby : {name : 1}}, function(err, cursor, count) {
             if (err) {
@@ -99,7 +125,8 @@ if (window.global) {
                 rows.push("<td>" + (obj["name"] ? obj["name"] : "") + "</td>");
                 rows.push("<td>" + (obj["email"] ? obj["email"] : "") + "</td>");
                 rows.push("<td>" + (obj["address"] ? obj["address"] : "") + "</td>");
-                rows.push("<td>" + (obj["birthdate"] ? obj["birthdate"].getFullYear()  : "") + "</td>");
+                rows.push("<td>" + (obj["birthdate"] ? obj["birthdate"].toLocaleDateString() : "") + "</td>");
+                rows.push("<td><a href='#" + obj["_id"] + "' class='rmrecord'><img src='img/cross16.png' border='0'></a></td>");
                 rows.push("</tr>");
             }
             $("#contacts > tbody:last").append(rows.join(""));
