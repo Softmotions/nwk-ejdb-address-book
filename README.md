@@ -2,7 +2,7 @@ nwk-ejdb-address-book
 =====================
 
 Simple demo address book implemented with [EJDB](https://github.com/Softmotions/ejdb) 
-and [node-webkit](https://github.com/nwjs/nw.js)
+and [nw.js](https://github.com/nwjs/nw.js)
 
 Installation (linux/osx):
 
@@ -31,5 +31,4 @@ Installation (linux/osx):
  * `make TARGET=v0.12.2` if you have nodejs `v0.12.x`
  * `make TARGET=v0.10.5` if you have nodejs `v0.10.x`
 
-        
  4. Then run addressbook application: `nw` in the `nwk-ejdb-address-book` directory.

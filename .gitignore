@@ -1,5 +1,7 @@
 /addressbook
 /addressbook_contacts
 /node_modules
+.idea/
+*.iml
 
 
