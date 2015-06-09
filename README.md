@@ -27,7 +27,7 @@ Installation (linux/osx):
  ...
 ```
 
- Try to use following nodejs version arguments for `nw-gyp`:
+ Try to use the following nodejs version arguments for `nw-gyp`:
     
  * `make TARGET=v0.12.2` if you have nodejs `v0.12.x`
  * `make TARGET=v0.10.5` if you have nodejs `v0.10.x`
