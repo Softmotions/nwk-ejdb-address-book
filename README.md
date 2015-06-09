@@ -31,4 +31,4 @@ Installation (linux/osx):
  * `make TARGET=v0.12.2` if you have nodejs `v0.12.x`
  * `make TARGET=v0.10.5` if you have nodejs `v0.10.x`
 
- `4.` Then run addressbook application: `nw` in the `nwk-ejdb-address-book` directory.
+`4.` Then run addressbook application: `nw` in the `nwk-ejdb-address-book` directory.
