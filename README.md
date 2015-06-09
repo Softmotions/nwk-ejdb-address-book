@@ -1,6 +1,8 @@
 nwk-ejdb-address-book
 =====================
 
+[![Join the chat at https://gitter.im/Softmotions/nwk-ejdb-address-book](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Softmotions/nwk-ejdb-address-book?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Simple demo address book implemented with [EJDB](https://github.com/Softmotions/ejdb) and [node-webkit](https://github.com/rogerwang/node-webkit)
 
 Installation (linux/macos):
