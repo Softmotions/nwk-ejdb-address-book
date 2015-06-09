@@ -85,7 +85,6 @@ if (window.global) {
         $("#saverr").parent().show();
     }
 
-
     function Remove(id) {
         jb.remove("contacts", id, function(err) {
             if (err) {
