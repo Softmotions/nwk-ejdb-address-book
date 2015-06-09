@@ -6,7 +6,7 @@ and [nw.js](https://github.com/nwjs/nw.js)
 
 Installation (linux/osx):
 
- `1.` Install [node-webkit](https://github.com/nwjs/nw.js) 
+ `1.` Install [nw.js](https://github.com/nwjs/nw.js) 
  The `nw` command should be available.
  
  ```js
@@ -14,6 +14,7 @@ Installation (linux/osx):
  ```
  
  `2.` `git clone https://github.com/Softmotions/nwk-ejdb-address-book.git`
+ 
  `3.` Then `cd ./nwk-ejdb-address-book` and run`make`
  If you got error like this:
  
