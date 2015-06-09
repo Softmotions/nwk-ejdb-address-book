@@ -10,7 +10,7 @@ Installation (linux/osx):
  The `nw` command should be available.
  
  ```js
- npm install nw
+ npm -g install nw
  ```
  
  `2.` `git clone https://github.com/Softmotions/nwk-ejdb-address-book.git`
