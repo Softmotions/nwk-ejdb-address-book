@@ -4,6 +4,12 @@ nwk-ejdb-address-book
 Simple demo address book implemented with [EJDB](https://github.com/Softmotions/ejdb) 
 and [nw.js](https://github.com/nwjs/nw.js)
 
+
+![Address book](http://softmotions.com/misc/addbook-screen.png)
+
+
+
+
 Installation (linux/osx):
 
  `1.` Install [nw.js](https://github.com/nwjs/nw.js) 
